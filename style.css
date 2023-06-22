@@ -3,7 +3,7 @@
 html {
   font-size: 65.5%;  /* 10px (100% --> 16px) */
   overflow-y: overlay; 
-  /* overflow-x: hidden; */
+  overflow-x: hidden;
   scroll-behavior: smooth;
   -webkit-overflow-scrolling:auto;
 }
