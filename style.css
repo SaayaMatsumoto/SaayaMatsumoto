@@ -476,6 +476,7 @@ main p {
   margin-top: 30px;
   margin-left: 5%;
   width: 30%;
+  object-fit: contain;
 }
 
 #live .container .button006 a {
