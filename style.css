@@ -756,6 +756,11 @@ textarea.c-form__input {
   background-position: right center;
 }
 
+/* .cd-fixed-bg.bg-works {
+  background-image: linear-gradient(to right,black 0%, transparent 70%, black 100%), url(./images/background/works.webp);
+  background-position: right center;
+} */
+
 .cd-fixed-bg.bg-bio {
   background-image: url(./images/background/bio.webp);
   background-position: center bottom;
