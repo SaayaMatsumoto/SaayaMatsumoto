@@ -28,7 +28,6 @@ html {
   box-sizing: border-box;
   font-family: 'Spectral', serif, 'Noto serif JP', serif;
   /* font-family: 'Noto Sans JP', sans-serif; */
-  color: #263F5B;
 }
 
 .material-symbols-outlined {
@@ -105,12 +104,17 @@ footer {
   margin: 0 auto;
   padding: 0 4%;
   z-index: 10000;
+  color: #263F5B;
   /* background-color: #263F5B; */
 }
 
 .sns-bar {
   font-size: 240%;
   margin-bottom: 1%;
+}
+
+.sns-bar a, .sns-bar a:visited {
+  color: #263F5B;
 }
 
 .sns-bar a:hover {
@@ -120,10 +124,6 @@ footer {
 
 footer p {
   font-size: 120%;
-}
-
-a, a:visited {
-  text-decoration: none;
 }
 
 h1 {
@@ -222,6 +222,7 @@ figcaption{
   transition: 0.3s ease-in-out;
   font-size: 160%;
   font-weight: 500;
+  text-decoration: none;
 }
 .button003 a:hover {
   background: #313131;
@@ -247,6 +248,7 @@ figcaption{
 /* 006 */
 .button006 a {
   background: #809EC7;
+  color: #263F5B;
   position: relative;
   display: flex;
   justify-content: space-around;
@@ -259,6 +261,7 @@ figcaption{
   font-size: 160%;
   /* font-weight: 500; */
   border-radius: 50px;
+  text-decoration: none;
 }
 .button006 a:before {
   content: '';
@@ -419,27 +422,21 @@ main p {
 }
 
 #live a, a:visited {
-	text-decoration: none;
+	text-decoration: underline;
   color: white;
   position: relative;
   display: inline-block;
+  transition: color 0.3s ease; 
 }
 
-#live a::after {
-  position: absolute;
-  left: 0;
-  content: '';
-  width: 100%;
-  height: 1px;
-  background: white;
-  bottom: -1px;
-  transform: scale(0, 1);
-  transform-origin: center top;
-  transition: transform 0.3s;
+#live a:hover {
+  color: #cccccc;
 }
 
-#live a:hover::after {
-  transform: scale(1, 1);
+#live ul {
+  padding-left: 0;
+  margin-left: 1.5em;
+  font-size: 140%;
 }
 
 .live-item {
@@ -494,6 +491,7 @@ main p {
   font-size: 160%;
   /* font-weight: 500; */
   border-radius: 0;
+  text-decoration: none;
 }
 
 #live .container .button006 a:before {
