@@ -1,0 +1,959 @@
+@charset "UTF-8";
+
+:root {
+  --color-ink: #24211f;
+  --color-ink-soft: #56504b;
+  --color-paper: #f7f3eb;
+  --color-paper-deep: #eee7dc;
+  --color-white: #fffdf8;
+  --color-gold: #a57d47;
+  --color-gold-light: #c8aa7e;
+  --color-line: rgba(36, 33, 31, 0.18);
+  --font-serif: "Yu Mincho", "YuMincho", "Hiragino Mincho ProN", "Hiragino Mincho Pro", "Noto Serif JP", serif;
+  --font-sans: "Hiragino Kaku Gothic ProN", "Yu Gothic", "YuGothic", "Noto Sans JP", sans-serif;
+  --content-width: 70rem;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  color-scheme: light;
+  scroll-padding-top: 2rem;
+}
+
+body {
+  margin: 0;
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-serif);
+  font-size: 1rem;
+  line-height: 1.9;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+  text-underline-offset: 0.25em;
+}
+
+h1,
+h2,
+h3,
+p,
+ul,
+dl,
+figure {
+  margin-top: 0;
+}
+
+ul {
+  padding-left: 0;
+}
+
+.skip-link {
+  position: fixed;
+  z-index: 100;
+  top: 0.75rem;
+  left: 0.75rem;
+  padding: 0.65rem 1rem;
+  transform: translateY(-200%);
+  background: var(--color-ink);
+  color: var(--color-white);
+  font-family: var(--font-sans);
+  font-size: 0.875rem;
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-gold);
+  outline-offset: 4px;
+}
+
+.container {
+  width: min(calc(100% - 2.5rem), var(--content-width));
+  margin-inline: auto;
+}
+
+/* =========================
+   Hero
+   ========================= */
+
+.fixed-bg--hero {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+
+  width: 100vw;
+  height: 100svh;
+
+  overflow: hidden;
+  pointer-events: none;
+  user-select: none;
+}
+
+.fixed-bg--hero img {
+    left: 0;
+    top: 0;
+
+    width: 100%;
+    height: 100%;
+
+    transform: none;
+
+    object-fit: cover;
+    object-position: 21% 20%;
+  }
+
+.hero {
+  position: relative;
+  display: flex;
+  min-height: 100vh;
+  min-height: 100svh;
+}
+
+.hero__panel {
+  position: absolute;
+  z-index: 1;
+
+  top: 20%;
+  right: 5%;
+
+  width: 90%;
+  height: 60%;
+
+  display: grid;
+  align-items: center;
+
+  padding: clamp(2rem, 4vw, 4rem) clamp(1.5rem, 3vw, 3rem);
+
+  overflow: hidden;
+  background: rgba(247, 243, 235, 0.7);
+
+  container-type: inline-size;
+}
+
+.hero__panel::before,
+.hero__panel::after {
+  position: absolute;
+  content: "";
+  pointer-events: none;
+}
+
+.hero__panel::before {
+  top: 1.25rem;
+  right: 1.25rem;
+  bottom: 1.25rem;
+  left: 1.25rem;
+
+  border: 1.5px solid rgba(165, 125, 71, 0.48);
+}
+
+.hero__panel::after {
+  width: 7rem;
+  height: 7rem;
+  right: -3.5rem;
+  bottom: 8%;
+  border: 1.5px solid rgba(165, 125, 71, 0.45);
+  border-radius: 50%;
+}
+
+.hero__content {
+  position: relative;
+  z-index: 1;
+
+  width: 100%;
+  margin-inline: auto;
+
+  text-align: center;
+}
+
+.hero__kicker {
+  margin-bottom: 1.75rem;
+  color: var(--color-gold);
+  font-family: var(--font-sans);
+
+  font-size: clamp(0.68rem, 2.8cqw, 0.95rem);
+  font-weight: 600;
+
+  letter-spacing: clamp(0.06em, 0.45cqw, 0.24em);
+
+  white-space: nowrap;
+}
+
+.hero h1 {
+  max-width: none;
+  margin: 0 auto;
+
+  white-space: nowrap;
+
+  font-size: clamp(1.4rem, 9cqw, 4.6rem);
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  line-height: 1.25;
+}
+
+.hero h1::after {
+  display: block;
+  width: 3rem;
+  height: 1.5px;
+  margin: 1.6rem auto 0;
+  background: var(--color-gold);
+  content: "";
+}
+
+.hero__performers {
+  display: grid;
+  gap: 0.15rem;
+  margin-top: 1.75rem;
+}
+
+.hero__performers p {
+  margin: 0;
+  font-size: clamp(1.25rem, 6vw, 1.25rem);
+  letter-spacing: 0.09em;
+}
+
+.hero__performers span {
+  display: inline-block;
+  min-width: 5.4rem;
+  margin-right: 0.65rem;
+  color: var(--color-ink-soft);
+  font-family: var(--font-sans);
+  font-size: 0.8em;
+  letter-spacing: 0.16em;
+}
+
+.hero__dates {
+  display: grid;
+  gap: 0.55rem;
+  width: min(100%, 26rem);
+  margin: 2.25rem auto 0;
+  padding-top: 1.3rem;
+  border-top: 1.5px solid var(--color-line);
+  font-family: var(--font-sans);
+  font-size: 1.00rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+}
+
+.hero__dates p {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin: 0;
+}
+
+.hero__dates span {
+  /* color: var(--color-gold); */
+  font-weight: 700;
+}
+
+.section-nav {
+  position: relative;
+  z-index: 2;
+  border-top: 1px solid var(--color-line);
+  border-bottom: 1px solid var(--color-line);
+  background: var(--color-white);
+}
+
+main {
+  position: relative;
+  z-index: 2;
+  background: var(--color-paper);
+}
+
+.section-nav ul {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  width: min(100%, 45rem);
+  margin: 0 auto;
+  list-style: none;
+}
+
+.section-nav li:nth-child(odd) {
+  border-right: 1px solid var(--color-line);
+}
+
+.section-nav li:nth-child(-n + 2) {
+  border-bottom: 1px solid var(--color-line);
+}
+
+.section-nav a {
+  display: block;
+  padding: 0.85rem 0.4rem;
+  font-family: var(--font-sans);
+  font-size: 0.73rem;
+  font-weight: 600;
+  letter-spacing: 0.11em;
+  text-align: center;
+  text-decoration: none;
+}
+
+.section {
+  min-height: 100vh;
+  min-height: 100svh;
+
+  padding-block: clamp(4rem, 10vw, 6rem);
+}
+
+.section > .container {
+  width: min(calc(100% - 2.5rem), var(--content-width));
+  margin-inline: auto;
+}
+
+.section--warm {
+  background: var(--color-paper-deep);
+}
+
+.section--dark {
+  background: var(--color-ink);
+  color: var(--color-white);
+}
+
+.section--rule {
+  border-top: 1px solid var(--color-line);
+}
+
+.section-heading {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: clamp(2.75rem, 8vw, 5.25rem);
+}
+
+.section-heading::after {
+  height: 1px;
+  flex: 1;
+  background: var(--color-line);
+  content: "";
+}
+
+.section-heading__number {
+  width: 1.7rem;
+  margin: 0;
+  color: var(--color-gold);
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+}
+
+.section-heading h2 {
+  margin: 0;
+  font-size: clamp(1.65rem, 7vw, 2rem);
+  font-weight: 400;
+  letter-spacing: 0.12em;
+  line-height: 1.35;
+}
+
+.section-heading h2 span {
+  display: inline-block;
+  margin-left: 0.5em;
+
+  color: var(--color-gold);
+
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 60%;
+  font-style: italic;
+  font-weight: 400;
+
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+
+  opacity: 0.85;
+}
+
+.section-heading--light::after {
+  background: rgba(255, 253, 248, 0.2);
+}
+
+/* =========================
+   Performers
+   ========================= */
+
+/* #performers {
+  min-height: 100vh;
+  min-height: 100svh;
+
+  display: flex;
+  align-items: center;
+
+  padding-block: clamp(3.5rem, 7vw, 5rem);
+}
+
+#performers > .container {
+  width: min(calc(100% - 2.5rem), var(--content-width));
+  margin-inline: auto;
+}
+
+#performers .section-heading {
+  margin-bottom: clamp(2rem, 4vw, 3.5rem);
+} */
+
+.performer-grid {
+  display: grid;
+  gap: 3.5rem;
+}
+
+.performer-card {
+  display: grid;
+  gap: 1.5rem;
+  min-width: 0;
+}
+
+/* スマホでは写真を少し小さくして中央配置 */
+.performer-card__image {
+  position: relative;
+
+  width: min(82%, 22rem);
+  margin-inline: auto;
+
+  overflow: hidden;
+  background: var(--color-ink);
+}
+
+.performer-card__image img {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+}
+
+/* 情報エリア */
+.performer-card__body {
+  width: min(90%, 24rem);
+  margin-inline: auto;
+}
+
+/* ソプラノ / ピアノ */
+.performer-card__role {
+  margin-bottom: 0.5rem;
+
+  color: var(--color-gold);
+  font-family: var(--font-sans);
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+}
+
+/* 日本語名 */
+.performer-card__name {
+  margin-bottom: 1.25rem;
+
+  font-size: clamp(1.65rem, 7vw, 2rem);
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  line-height: 1.4;
+}
+
+/* ローマ字 */
+.performer-card__roman {
+  display: block;
+
+  margin-top: 0.3rem;
+
+  color: var(--color-gold);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 0.58em;
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: 0.03em;
+}
+
+/* プロフィール抜粋 */
+.performer-card__excerpt {
+  margin-bottom: 1.25rem;
+
+  color: var(--color-ink-soft);
+  font-size: 0.98rem;
+  line-height: 1.95;
+}
+
+/* 続きを読む */
+.performer-card__more {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+
+  color: var(--color-gold);
+  font-family: var(--font-sans);
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-decoration: none;
+}
+
+.performer-card__more::after {
+  width: 2.5rem;
+  height: 1px;
+  background: currentColor;
+  content: "";
+}
+
+.placeholder {
+  margin-bottom: 0;
+  color: #766a60;
+  font-family: var(--font-sans);
+  font-size: 0.86rem;
+  letter-spacing: 0.03em;
+}
+
+/* =========================
+   Programme
+   ========================= */
+
+.program-layout {
+  display: grid;
+  gap: 4rem;
+}
+
+.program-list {
+  display: grid;
+  gap: 2.75rem;
+}
+
+.program-group h3 {
+  margin-bottom: 0.75rem;
+  color: var(--color-gold-light);
+  font-family: var(--font-sans);
+  font-size: 0.93rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+}
+
+.program-group ul {
+  margin-bottom: 0;
+  list-style: none;
+}
+
+.program-group li {
+  font-size: clamp(1.18rem, 5vw, 1.65rem);
+  letter-spacing: 0.06em;
+  line-height: 1.75;
+}
+
+.program-solo {
+  padding: 2rem 1.5rem;
+  border: 1px solid rgba(200, 170, 126, 0.55);
+}
+
+.program-solo__label {
+  margin-bottom: 2.25rem;
+  padding-bottom: 0.8rem;
+  border-bottom: 1px solid rgba(255, 253, 248, 0.18);
+  font-size: 1.25rem;
+  letter-spacing: 0.16em;
+}
+
+.program-solo .program-group + .program-group {
+  margin-top: 2rem;
+}
+
+.program-more {
+  grid-column: 1 / -1;
+
+  margin: 0;
+  color: var(--color-gold-light);
+
+  font-family: var(--font-sans);
+  font-size: 0.93rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+}
+
+/* =========================
+   Concert Information
+   ========================= */
+
+.concert-grid {
+  display: grid;
+  gap: 2rem;
+}
+
+.concert-card {
+  border: 1px solid var(--color-line);
+  background: var(--color-white);
+}
+
+.concert-card header {
+  padding: 1.8rem;
+  border-bottom: 1px solid var(--color-line);
+}
+
+.concert-card__city {
+  margin-bottom: 0.55rem;
+
+  color: var(--color-gold);
+  font-family: var(--font-sans);
+
+  font-size: 0.84rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+}
+
+.concert-card h3 {
+  margin-bottom: 0;
+
+  font-size: clamp(1.4rem, 5vw, 1.85rem);
+  font-weight: 400;
+  letter-spacing: 0.06em;
+}
+
+.concert-card__body {
+  padding: 1.8rem;
+}
+
+.concert-card__venue {
+  min-height: 5.1rem;
+  margin-bottom: 1.75rem;
+
+  font-size: 1.08rem;
+  line-height: 1.8;
+}
+
+.concert-card__venue strong {
+  font-size: 1.4rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+}
+
+.time-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+
+  margin-bottom: 0;
+
+  border-top: 1px solid var(--color-line);
+  /* border-bottom: 1px solid var(--color-line); */
+}
+
+.time-list div {
+  padding: 1rem 0.6rem;
+  text-align: center;
+}
+
+.time-list div + div {
+  border-left: 1px solid var(--color-line);
+}
+
+.time-list dt {
+  color: var(--color-ink-soft);
+  font-family: var(--font-sans);
+
+  font-size: 0.78rem;
+  letter-spacing: 0.12em;
+}
+
+.time-list dd {
+  margin-left: 0;
+
+  font-size: 1.25rem;
+  letter-spacing: 0.05em;
+}
+
+/* =========================
+   Concert Information
+   ========================= */
+
+.ticket-layout {
+  display: grid;
+}
+
+.ticket-panel {
+  padding: clamp(1.4rem, 5vw, 2.75rem);
+  background: var(--color-ink);
+  color: var(--color-white);
+}
+
+.price-list {
+  margin-bottom: 2rem;
+}
+
+.price-list div {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-block: 1rem;
+  border-bottom: 1px solid rgba(255, 253, 248, 0.18);
+}
+
+.price-list dt {
+  font-size: 1rem;
+  letter-spacing: 0.06em;
+}
+
+.price-list dt span {
+  display: block;
+  color: rgba(255, 253, 248, 0.65);
+  font-family: var(--font-sans);
+  font-size: 0.68rem;
+  letter-spacing: 0.04em;
+}
+
+.price-list dd {
+  margin-left: 0;
+  color: var(--color-gold-light);
+  font-size: 1.18rem;
+  white-space: nowrap;
+}
+
+.ticket-note {
+  position: relative;
+  margin-bottom: 0;
+  padding-left: 1.25rem;
+  color: rgba(255, 253, 248, 0.72);
+  font-family: var(--font-sans);
+  font-size: 0.76rem;
+}
+
+.ticket-note::before {
+  position: absolute;
+  left: 0;
+  content: "※";
+}
+
+.outlet-grid,
+.credit-grid {
+  display: grid;
+  gap: 2.5rem;
+}
+
+.outlet-grid article {
+  min-height: 9rem;
+  padding: 1.6rem;
+  border-left: 2px solid var(--color-gold);
+  background: var(--color-white);
+}
+
+.outlet-grid h3,
+.credit-grid h3 {
+  margin-bottom: 1.15rem;
+  font-size: 1rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+}
+
+.credit-grid > div {
+  padding-top: 1.4rem;
+  border-top: 1px solid var(--color-line);
+}
+
+.credit-grid p,
+.credit-grid ul {
+  margin-bottom: 0;
+}
+
+.credit-grid ul {
+  display: grid;
+  gap: 0.25rem;
+  list-style: none;
+}
+
+.site-footer {
+  position: relative;
+  z-index: 2;
+  padding: 3rem 1.25rem;
+  background: var(--color-ink);
+  color: rgba(255, 253, 248, 0.72);
+  text-align: center;
+}
+
+.site-footer p {
+  margin-bottom: 0.25rem;
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+}
+
+@media (min-width: 36rem) {
+  .container {
+    width: min(calc(100% - 4rem), var(--content-width));
+  }
+
+  .section-nav ul {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .section-nav li,
+  .section-nav li:nth-child(odd),
+  .section-nav li:nth-child(-n + 2) {
+    border: 0;
+  }
+
+  .section-nav li + li {
+    border-left: 1px solid var(--color-line);
+  }
+
+  .performer-grid,
+  .profile-grid,
+  .concert-grid,
+  .outlet-grid,
+  .credit-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .performer-grid {
+    gap: clamp(2rem, 6vw, 5rem);
+  }
+
+  .profile-grid {
+    gap: clamp(3rem, 7vw, 6rem);
+  }
+
+  .program-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .program-solo {
+    padding: 2.5rem;
+  }
+}
+
+@media (min-width: 64rem) {
+  .hero__panel {
+    top: 10%;
+    right: 10%;
+    width: 40%;
+    height: 80%;
+    background: rgba(247, 243, 235, 0.5);
+  }
+
+  .section {
+    display: flex;
+    align-items: center;
+
+    padding-block: clamp(4rem, 7vh, 6rem);
+  }
+
+  .performer-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: clamp(3rem, 5vw, 6rem);
+  }
+
+  .performer-card {
+    grid-template-columns:
+      minmax(10rem, 0.9fr)
+      minmax(11rem, 1.1fr);
+
+    gap: clamp(1.25rem, 2vw, 2.25rem);
+    align-items: center;
+  }
+
+  /* PCではカード横並びなので幅制限を解除 */
+  .performer-card__image {
+    width: 100%;
+    margin-inline: 0;
+  }
+
+  .performer-card__body {
+    width: 100%;
+    margin-inline: 0;
+  }
+
+  .performer-card__name {
+    font-size: clamp(1.4rem, 2vw, 1.9rem);
+  }
+
+  .performer-card__excerpt {
+    font-size: 0.9rem;
+  }
+
+  .performer-card__more {
+    font-size: 0.76rem;
+  }
+
+  .section-nav {
+    position: relative;
+    z-index: 5;
+  }
+
+  .program-layout {
+    grid-template-columns: minmax(0, 1.45fr) minmax(19rem, 0.55fr);
+    gap: clamp(4rem, 8vw, 8rem);
+    align-items: start;
+  }
+
+  .program-solo {
+    margin-top: 0.25rem;
+  }
+
+  .concert-card header,
+  .concert-card__body {
+    padding: 2rem;
+  }
+
+  .ticket-layout {
+    grid-template-columns: minmax(16rem, 0.7fr) minmax(28rem, 1.3fr);
+    gap: 5rem;
+    align-items: start;
+  }
+
+  .ticket-layout .section-heading {
+    margin-bottom: 0;
+  }
+}
+
+@media (prefers-contrast: more) {
+  :root {
+    --color-line: rgba(36, 33, 31, 0.48);
+  }
+
+  .placeholder {
+    color: var(--color-ink);
+  }
+}
+
+@media print {
+  body {
+    background: #fff;
+    color: #000;
+    font-size: 10pt;
+  }
+
+  .skip-link,
+  .section-nav,
+  .hero__background,
+
+  .hero {
+    display: block;
+    min-height: 0;
+  }
+
+  .hero__panel {
+    min-height: 90vh;
+    page-break-after: always;
+  }
+
+  .section,
+  .site-footer {
+    padding-block: 2rem;
+    background: #fff;
+    color: #000;
+  }
+
+  .performer-card__image span {
+    color: #fff;
+  }
+
+  .ticket-panel {
+    border: 1px solid #000;
+    background: #fff;
+    color: #000;
+  }
+
+  .price-list dd,
+  .program-group h3,
+  .ticket-note {
+    color: #000;
+  }
+}
