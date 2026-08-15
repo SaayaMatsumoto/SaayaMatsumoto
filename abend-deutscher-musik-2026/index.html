@@ -153,15 +153,6 @@
       </div>
     </header>
 
-    <!-- <nav class="section-nav" aria-label="ページ内のご案内">
-      <ul>
-        <li><a href="#performers">出演者</a></li>
-        <li><a href="#program">プログラム</a></li>
-        <li><a href="#concerts">公演情報</a></li>
-        <li><a href="#tickets">チケット</a></li>
-      </ul>
-    </nav> -->
-
     <main id="main-content">
       <section class="section section--warm" id="performers" aria-labelledby="performers-title">
         <div class="container">
@@ -185,7 +176,10 @@
               </div>
 
               <div class="performer-card__body">
-                <p class="performer-card__role">ソプラノ</p>
+                <p class="performer-card__role">
+                  ソプラノ
+                  <span class="performer-card__role-en">Soprano</span>
+                </p>
 
                 <h3 class="performer-card__name">
                   松元 美裕子
@@ -219,7 +213,10 @@
               </div>
 
               <div class="performer-card__body">
-                <p class="performer-card__role">ピアノ</p>
+                <p class="performer-card__role">
+                  ピアノ
+                  <span class="performer-card__role-en">Piano</span>
+                </p>
 
                 <h3 class="performer-card__name">
                   葛西 寛俊
@@ -357,56 +354,307 @@
       </section>
 
       <section class="section section--warm" id="tickets" aria-labelledby="tickets-title">
-        <div class="container ticket-layout">
+        <div class="container">
+
           <div class="section-heading">
             <p class="section-heading__number" aria-hidden="true">五</p>
             <h2 id="tickets-title">チケット</h2>
           </div>
 
-          <div class="ticket-panel">
-            <dl class="price-list">
-              <div>
-                <dt>一般</dt>
-                <dd>3,000円</dd>
+          <div class="ticket-layout">
+
+            <!-- 料金 -->
+            <div class="ticket-panel">
+              <h3>料金</h3>
+
+              <dl class="price-list">
+                <div>
+                  <dt>一般</dt>
+                  <dd>3,000円</dd>
+                </div>
+
+                <div>
+                  <dt>
+                    学生
+                    <span>（大学生以下）</span>
+                  </dt>
+                  <dd>1,000円</dd>
+                </div>
+
+                <div>
+                  <dt>
+                    ペア券
+                    <span>（都城公演のみ）</span>
+                  </dt>
+                  <dd>5,000円</dd>
+                </div>
+              </dl>
+
+              <p class="ticket-note">
+                未就学児童の入場はご遠慮ください。
+              </p>
+            </div>
+
+
+            <!-- チケット取扱店 -->
+            <div class="ticket-outlets">
+
+              <div class="ticket-outlets__heading">
+                <h3>チケット取扱店</h3>
+                <p>
+                  チケットは下記の取扱店にて直接お買い求めください。
+                </p>
               </div>
-              <div>
-                <dt>学生<span>（大学生以下）</span></dt>
-                <dd>1,000円</dd>
+
+              <!-- 宮崎市 -->
+              <div class="outlet-area">
+                <h4>宮崎市</h4>
+
+                <div class="outlet-list">
+
+                  <article class="outlet">
+                    <h5>メディキット県民文化センター</h5>
+                    <address>
+                      〒880-8557<br>
+                      宮崎市船塚3丁目210番地<br>
+                      TEL：
+                      <a href="tel:0985287766">0985-28-7766</a>
+                      （チケットセンター）
+                    </address>
+                    <a
+                      class="outlet__website"
+                      href="https://miyazaki-ac.jp/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      公式サイト
+                    </a>
+                  </article>
+
+                  <article class="outlet">
+                    <h5>西村楽器 MICC本店</h5>
+                    <address>
+                      〒880-0001<br>
+                      宮崎市橘通西4丁目6-3 MRTパーキング1F<br>
+                      TEL：
+                      <a href="tel:0985244141">0985-24-4141</a>
+                    </address>
+                    <a
+                      class="outlet__website"
+                      href="https://nishi-mura.co.jp/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      公式サイト
+                    </a>
+                  </article>
+
+                  <article class="outlet">
+                    <h5>カワイ宮崎ショップ</h5>
+                    <address>
+                      〒880-0805<br>
+                      宮崎市橘通東4丁目8番1号 カリーノ宮崎2階<br>
+                      TEL：
+                      <a href="tel:0985242404">0985-24-2404</a>
+                    </address>
+                    <a
+                      class="outlet__website"
+                      href="https://shop.kawai.jp/miyazaki/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      公式サイト
+                    </a>
+                  </article>
+
+                  <article class="outlet">
+                    <h5>宮崎ピアノ技術センター</h5>
+                    <address>
+                      〒880-0031<br>
+                      宮崎市船塚2丁目162<br>
+                      TEL：
+                      <a href="tel:0985259788">0985-25-9788</a>
+                    </address>
+                    <a
+                      class="outlet__website"
+                      href="https://miyapi.wixsite.com/miyazakipiano"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      公式サイト
+                    </a>
+                  </article>
+
+                </div>
               </div>
-              <div>
-                <dt>ペア券<span>（都城公演のみ）</span></dt>
-                <dd>5,000円</dd>
+
+
+              <!-- 都城市 -->
+              <div class="outlet-area">
+                <h4>都城市</h4>
+
+                <div class="outlet-list">
+
+                  <article class="outlet">
+                    <h5>都城ウエルネス交流プラザ</h5>
+                    <address>
+                      〒885-0051<br>
+                      都城市蔵原町11街区25号<br>
+                      TEL：
+                      <a href="tel:0986267770">0986-26-7770</a>
+                    </address>
+                    <a
+                      class="outlet__website"
+                      href="https://www.my-machitan.jp/spotnews/plaza_ticket_info/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      公式サイト
+                    </a>
+                  </article>
+
+                  <article class="outlet">
+                    <h5>西村楽器 都城店</h5>
+                    <address>
+                      〒885-0033<br>
+                      都城市妻ヶ丘町29-13<br>
+                      TEL：
+                      <a href="tel:0986242156">0986-24-2156</a>
+                    </address>
+                    <a
+                      class="outlet__website"
+                      href="https://nishi-mura.co.jp/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      公式サイト
+                    </a>
+                  </article>
+
+                  <article class="outlet">
+                    <h5>平和堂楽器店</h5>
+                    <address>
+                      〒885-0051<br>
+                      都城市蔵原町11-18<br>
+                      TEL：
+                      <a href="tel:0986222733">0986-22-2733</a>
+                    </address>
+                  </article>
+
+                </div>
               </div>
-            </dl>
-            <p class="ticket-note">未就学児童の入場はご遠慮ください。</p>
+
+
+              <p class="ticket-outlets__note">
+                ※店舗により営業時間・定休日が異なります。ご来店の際は、
+                各店舗の公式サイト等で最新情報をご確認ください。
+              </p>
+
+            </div>
+
           </div>
+
+
+          <!-- 公演についてのお問い合わせ -->
+          <div class="ticket-contact">
+            <h3>公演についてのお問い合わせ</h3>
+
+            <p>
+              チケットに関するお問い合わせは、各チケット取扱店までお願いいたします。
+            </p>
+
+            <p>
+              その他、公演に関するお問い合わせは主催者までお問い合わせください。
+            </p>
+
+            <a class="ticket-contact__button" href="#contact">
+              お問い合わせフォームへ
+            </a>
+          </div>
+
         </div>
       </section>
-
-      <section class="section" id="outlets" aria-labelledby="outlets-title">
+      <!-- <section class="section section--warm" id="tickets" aria-labelledby="tickets-title">
         <div class="container">
+
           <div class="section-heading">
-            <p class="section-heading__number" aria-hidden="true">六</p>
-            <h2 id="outlets-title">チケット取扱い</h2>
+            <h2 id="tickets-title">チケット</h2>
           </div>
 
-          <div class="outlet-grid">
-            <article>
-              <h3>都城市公演</h3>
-              <p class="placeholder">［準備中：チケット取扱店］</p>
-            </article>
-            <article>
-              <h3>宮崎市公演</h3>
-              <p class="placeholder">［準備中：チケット取扱店］</p>
-            </article>
+          <div class="ticket-layout">
+
+            <div class="ticket-panel">
+              <h3>料金</h3>
+
+              <dl class="price-list">
+                <div>
+                  <dt>一般</dt>
+                  <dd>3,000円</dd>
+                </div>
+
+                <div>
+                  <dt>
+                    学生
+                    <span>（大学生以下）</span>
+                  </dt>
+                  <dd>1,000円</dd>
+                </div>
+
+                <div>
+                  <dt>
+                    ペア券
+                    <span>（都城公演のみ）</span>
+                  </dt>
+                  <dd>5,000円</dd>
+                </div>
+              </dl>
+
+              <p class="ticket-note">
+                未就学児童の入場はご遠慮ください。
+              </p>
+            </div>
+
+
+            <div class="ticket-outlets">
+              <h3>チケット取扱い</h3>
+
+              <ul>
+                <li>メディキット県民文化センター</li>
+                <li>都城ウェルネス交流プラザ</li>
+                <li>西村楽器 mice 本店・都城店</li>
+                <li>カワイ宮崎ショップ</li>
+                <li>平和堂楽器店</li>
+                <li>宮崎ピアノ技術センター</li>
+              </ul>
+            </div>
+
           </div>
+        </div>
+      </section> -->
+
+      <section class="section" id="contact" aria-labelledby="contact-title">
+        <div class="container">
+
+          <div class="section-heading">
+            <h2 id="contact-title">お問い合わせ</h2>
+          </div>
+
+          <div class="contact-form-embed__frame">
+            <iframe
+              src="https://docs.google.com/forms/d/e/1FAIpQLScffBKvg2hy5JYIweF6yhqygKLYGn7gHd0AiaigZvR1f0EAhg/viewform?embedded=true"
+              title="ドイツ音楽の夕べ お問い合わせフォーム"
+              loading="lazy"
+            >
+              Loading…
+            </iframe>
+          </div>
+
         </div>
       </section>
 
       <section class="section section--rule" id="credits" aria-labelledby="credits-title">
         <div class="container">
           <div class="section-heading">
-            <p class="section-heading__number" aria-hidden="true">七</p>
             <h2 id="credits-title">主催・後援</h2>
           </div>
 
@@ -430,8 +678,14 @@
     </main>
 
     <footer class="site-footer">
-      <p>［コンサートタイトル］</p>
+      <p>ドイツ音楽の夕べ</p>
       <p>主催　ポアーンドルグ</p>
+      <p>&copy; 2026 Saaya Matsumoto. All rights reserved.</p>
     </footer>
+
+    <a class="floating-contact" href="#contact" aria-label="お問い合わせフォームへ移動">
+      <span class="floating-contact__icon" aria-hidden="true">✉</span>
+      <span class="floating-contact__text">お問い合わせ</span>
+    </a>
   </body>
 </html>

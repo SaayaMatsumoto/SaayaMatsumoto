@@ -23,6 +23,7 @@
 html {
   color-scheme: light;
   scroll-padding-top: 2rem;
+  scroll-behavior: smooth;
 }
 
 body {
@@ -446,6 +447,19 @@ main {
   letter-spacing: 0.18em;
 }
 
+.performer-card__role-en {
+  display: inline-block;
+  margin-left: 0.7em;
+
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 80%;
+  font-style: italic;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+
+  opacity: 0.8;
+}
+
 /* 日本語名 */
 .performer-card__name {
   margin-bottom: 1.25rem;
@@ -662,17 +676,45 @@ main {
 }
 
 /* =========================
-   Concert Information
+   Ticket Information
+   ========================= */
+
+/* =========================
+   Ticket layout
    ========================= */
 
 .ticket-layout {
   display: grid;
+  gap: 2.5rem;
 }
 
+.ticket-panel,
+.ticket-outlets {
+  min-width: 0;
+}
+
+
+/* -------------------------
+   Price
+   ------------------------- */
+
 .ticket-panel {
-  padding: clamp(1.4rem, 5vw, 2.75rem);
+  padding: clamp(1.6rem, 5vw, 2.75rem);
   background: var(--color-ink);
   color: var(--color-white);
+}
+
+.ticket-panel h3,
+.ticket-outlets h3,
+.ticket-contact h3 {
+  margin-bottom: 1.5rem;
+  font-size: 1.2rem;
+  font-weight: 400;
+  letter-spacing: 0.12em;
+}
+
+.ticket-panel h3 {
+  color: var(--color-gold-light);
 }
 
 .price-list {
@@ -684,59 +726,255 @@ main {
   align-items: baseline;
   justify-content: space-between;
   gap: 1rem;
+
   padding-block: 1rem;
+
   border-bottom: 1px solid rgba(255, 253, 248, 0.18);
 }
 
 .price-list dt {
-  font-size: 1rem;
+  font-size: 1.05rem;
   letter-spacing: 0.06em;
 }
 
 .price-list dt span {
   display: block;
+
+  margin-top: 0.15rem;
+
   color: rgba(255, 253, 248, 0.65);
+
   font-family: var(--font-sans);
-  font-size: 0.68rem;
+  font-size: 0.72rem;
   letter-spacing: 0.04em;
 }
 
 .price-list dd {
   margin-left: 0;
+
   color: var(--color-gold-light);
-  font-size: 1.18rem;
+
+  font-size: 1.3rem;
   white-space: nowrap;
 }
 
-.ticket-note {
-  position: relative;
-  margin-bottom: 0;
-  padding-left: 1.25rem;
-  color: rgba(255, 253, 248, 0.72);
-  font-family: var(--font-sans);
-  font-size: 0.76rem;
-}
 
-.ticket-note::before {
-  position: absolute;
-  left: 0;
-  content: "※";
-}
+/* =========================
+   Ticket outlets
+   ========================= */
 
-.outlet-grid,
-.credit-grid {
-  display: grid;
-  gap: 2.5rem;
-}
+.ticket-outlets {
+  padding: clamp(1.6rem, 5vw, 2.75rem);
 
-.outlet-grid article {
-  min-height: 9rem;
-  padding: 1.6rem;
-  border-left: 2px solid var(--color-gold);
+  border: 1px solid var(--color-line);
   background: var(--color-white);
 }
 
-.outlet-grid h3,
+.ticket-outlets__heading {
+  margin-bottom: 2.5rem;
+}
+
+.ticket-outlets__heading h3 {
+  margin-bottom: 0.75rem;
+  color: var(--color-gold);
+}
+
+.ticket-outlets__heading p {
+  margin-bottom: 0;
+  color: var(--color-ink-soft);
+  font-size: 0.95rem;
+}
+
+
+/* City */
+
+.outlet-area + .outlet-area {
+  margin-top: 3rem;
+}
+
+.outlet-area > h4 {
+  margin: 0 0 1.5rem;
+
+  padding-bottom: 0.65rem;
+
+  border-bottom: 1px solid var(--color-gold);
+
+  color: var(--color-gold);
+
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+}
+
+
+/* Individual outlets */
+
+.outlet-list {
+  display: grid;
+  gap: 0;
+}
+
+.outlet {
+  padding-block: 1.35rem;
+  border-bottom: 1px solid var(--color-line);
+}
+
+.outlet:first-child {
+  padding-top: 0;
+}
+
+.outlet h5 {
+  margin: 0 0 0.55rem;
+
+  font-size: 1.05rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+}
+
+.outlet address {
+  margin: 0;
+
+  color: var(--color-ink-soft);
+
+  font-family: var(--font-sans);
+  font-size: 0.84rem;
+  font-style: normal;
+  line-height: 1.8;
+}
+
+.outlet address a {
+  text-decoration: none;
+}
+
+.outlet address a:hover,
+.outlet address a:focus-visible {
+  color: var(--color-gold);
+}
+
+.outlet__website {
+  display: inline-block;
+
+  margin-top: 0.6rem;
+
+  color: var(--color-gold);
+
+  font-family: var(--font-sans);
+  font-size: 0.76rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+
+  text-decoration: none;
+}
+
+.outlet__website::after {
+  margin-left: 0.35em;
+  content: "↗";
+}
+
+.outlet__website:hover,
+.outlet__website:focus-visible {
+  text-decoration: underline;
+}
+
+
+/* Note */
+
+.ticket-outlets__note {
+  margin: 2rem 0 0;
+
+  color: var(--color-ink-soft);
+
+  font-family: var(--font-sans);
+  font-size: 0.78rem;
+  line-height: 1.8;
+}
+
+
+/* =========================
+   Contact information
+   ========================= */
+
+.ticket-contact {
+  margin-top: clamp(3rem, 6vw, 5rem);
+  padding-top: clamp(2rem, 4vw, 3rem);
+
+  border-top: 1px solid var(--color-line);
+}
+
+.ticket-contact h3 {
+  color: var(--color-gold);
+}
+
+.ticket-contact p {
+  margin-bottom: 0.5rem;
+
+  color: var(--color-ink-soft);
+  font-size: 0.95rem;
+  line-height: 1.9;
+}
+
+.ticket-contact__button {
+  display: inline-flex;
+  align-items: center;
+
+  margin-top: 1.5rem;
+  padding: 0.8rem 1.4rem;
+
+  border: 1px solid var(--color-gold);
+
+  color: var(--color-gold);
+
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+
+  text-decoration: none;
+
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease;
+}
+
+.ticket-contact__button:hover,
+.ticket-contact__button:focus-visible {
+  background: var(--color-gold);
+  color: var(--color-white);
+}
+
+
+/* =========================
+   Desktop
+   ========================= */
+
+@media (min-width: 64rem) {
+
+}
+
+/* =========================
+   Contact / Google Form
+   ========================= */
+
+.contact-form-embed {
+  width: min(100%, 50rem);
+  margin-inline: auto;
+}
+
+.contact-form-embed__frame {
+  width: 100%;
+}
+
+.contact-form-embed__frame iframe {
+  display: block;
+
+  width: 100%;
+  height: 92rem;
+
+  margin: 0;
+  border: 0;
+}
+
 .credit-grid h3 {
   margin-bottom: 1.15rem;
   font-size: 1rem;
@@ -773,6 +1011,50 @@ main {
   margin-bottom: 0.25rem;
   font-size: 0.75rem;
   letter-spacing: 0.12em;
+}
+
+/* =========================
+   Floating contact button
+   ========================= */
+
+.floating-contact {
+  position: fixed;
+  z-index: 50;
+
+  right: 1rem;
+  bottom: 1rem;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0.75rem 1.1rem;
+
+  border: 1px solid var(--color-gold);
+
+  background-color: rgba(247, 243, 235, 0.94);
+  color: var(--color-ink);
+
+  font-family: var(--font-sans);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+
+  text-decoration: none;
+
+  box-shadow: 0 0.35rem 1.2rem rgba(36, 33, 31, 0.12);
+
+  transition:
+    background-color 0.25s ease,
+    color 0.25s ease,
+    border-color 0.25s ease;
+}
+
+a.floating-contact:hover,
+a.floating-contact:focus-visible {
+  background-color: var(--color-gold);
+  border-color: var(--color-gold);
+  color: var(--color-white);
 }
 
 @media (min-width: 36rem) {
@@ -893,13 +1175,23 @@ main {
   }
 
   .ticket-layout {
-    grid-template-columns: minmax(16rem, 0.7fr) minmax(28rem, 1.3fr);
-    gap: 5rem;
+    grid-template-columns:
+      minmax(18rem, 0.72fr)
+      minmax(30rem, 1.28fr);
+
+    gap: clamp(3rem, 6vw, 6rem);
+
     align-items: start;
   }
 
-  .ticket-layout .section-heading {
-    margin-bottom: 0;
+  .floating-contact {
+    right: 2rem;
+    bottom: 2rem;
+
+    padding: 0.9rem 1.4rem;
+
+    font-size: 0.84rem;
+    letter-spacing: 0.1em;
   }
 }
 
