@@ -262,45 +262,66 @@ ul {
   font-weight: 700;
 }
 
-.section-nav {
+/* =========================
+   Section gaps
+   ========================= */
+
+.section-gap {
   position: relative;
-  z-index: 2;
-  border-top: 1px solid var(--color-line);
-  border-bottom: 1px solid var(--color-line);
-  background: var(--color-white);
+  z-index: 1;
+
+  height: clamp(7rem, 14vw, 11rem);
+
+  background: transparent;
 }
+
+/* Desktop:
+   同じ画像の別位置を固定背景として表示 */
+@media (min-width: 64rem) {
+
+  .section-gap {
+    height: clamp(8rem, 15vw, 12rem);
+
+    background-image: url("../images/hero-image.webp");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+  }
+
+  /* 1つ目：画像中部 */
+  .section-gap--program {
+    background-position: 21% 50%;
+  }
+
+  /* 2つ目：画像下部（川） */
+  .section-gap--tickets {
+    background-position: 21% 82%;
+  }
+
+}
+
+.section-gap--program {
+  background-position: center 45%;
+}
+
+.section-gap--tickets {
+  background-position: center 75%;
+}
+
+/* =========================
+   Main and Section (common)
+   ========================= */
 
 main {
   position: relative;
   z-index: 2;
-  background: var(--color-paper);
+  background: transparent;
 }
 
-.section-nav ul {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  width: min(100%, 45rem);
-  margin: 0 auto;
-  list-style: none;
-}
-
-.section-nav li:nth-child(odd) {
-  border-right: 1px solid var(--color-line);
-}
-
-.section-nav li:nth-child(-n + 2) {
-  border-bottom: 1px solid var(--color-line);
-}
-
-.section-nav a {
-  display: block;
-  padding: 0.85rem 0.4rem;
-  font-family: var(--font-sans);
-  font-size: 0.73rem;
-  font-weight: 600;
-  letter-spacing: 0.11em;
-  text-align: center;
-  text-decoration: none;
+main,
+.section {
+  position: relative;
+  z-index: 2;
 }
 
 .section {
@@ -313,6 +334,10 @@ main {
 .section > .container {
   width: min(calc(100% - 2.5rem), var(--content-width));
   margin-inline: auto;
+}
+
+.section {
+  background: var(--color-paper);
 }
 
 .section--warm {
