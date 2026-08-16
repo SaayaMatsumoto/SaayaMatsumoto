@@ -1,5 +1,9 @@
 @charset "UTF-8";
 
+/* =========================
+   Base
+   ========================= */
+
 :root {
   --color-ink: #24211f;
   --color-ink-soft: #56504b;
@@ -22,7 +26,7 @@
 
 html {
   color-scheme: light;
-  /* scroll-padding-top: 2rem; */
+  /* Internal page links move smoothly to their preserved anchor targets. */
   scroll-behavior: smooth;
 }
 
@@ -61,23 +65,6 @@ ul {
   padding-left: 0;
 }
 
-.skip-link {
-  position: fixed;
-  z-index: 100;
-  top: 0.75rem;
-  left: 0.75rem;
-  padding: 0.65rem 1rem;
-  transform: translateY(-200%);
-  background: var(--color-ink);
-  color: var(--color-white);
-  font-family: var(--font-sans);
-  font-size: 0.875rem;
-}
-
-.skip-link:focus {
-  transform: translateY(0);
-}
-
 :focus-visible {
   outline: 2px solid var(--color-gold);
   outline-offset: 4px;
@@ -92,6 +79,7 @@ ul {
    Hero
    ========================= */
 
+/* A fixed full-viewport image keeps the hero visible behind the mobile gaps. */
 .fixed-bg--hero {
   position: fixed;
   inset: 0;
@@ -106,17 +94,11 @@ ul {
 }
 
 .fixed-bg--hero img {
-    left: 0;
-    top: 0;
-
-    width: 100%;
-    height: 100%;
-
-    transform: none;
-
-    object-fit: cover;
-    object-position: 21% 20%;
-  }
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 21% 20%;
+}
 
 .hero {
   position: relative;
@@ -191,11 +173,9 @@ ul {
 
   letter-spacing: clamp(0.06em, 0.45cqw, 0.24em);
 
-  white-space: wrap;
 }
 
 .hero h1 {
-  max-width: none;
   margin: 0 auto;
 
   white-space: nowrap;
@@ -223,7 +203,7 @@ ul {
 
 .hero__performers p {
   margin: 0;
-  font-size: clamp(1.25rem, 6vw, 1.25rem);
+  font-size: 1.25rem;
   letter-spacing: 0.09em;
 }
 
@@ -245,7 +225,7 @@ ul {
   padding-top: 1.3rem;
   border-top: 1.5px solid var(--color-line);
   font-family: var(--font-sans);
-  font-size: 1.00rem;
+  font-size: 1rem;
   font-weight: 500;
   letter-spacing: 0.08em;
 }
@@ -258,65 +238,12 @@ ul {
 }
 
 .hero__dates span {
-  /* color: var(--color-gold); */
   font-weight: 700;
 }
 
 /* =========================
-   Section gaps
+   Page sections
    ========================= */
-
-.section-gap {
-  position: relative;
-  z-index: 1;
-
-  height: clamp(7rem, 14vw, 11rem);
-
-  background: transparent;
-}
-
-/* Desktop:
-   同じ画像の別位置を固定背景として表示 */
-@media (min-width: 64rem) {
-
-  .section-gap {
-    height: clamp(8rem, 15vw, 12rem);
-
-    background-image: url("../images/hero-image.webp");
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-attachment: fixed;
-  }
-
-  /* 1つ目：画像中部 */
-  .section-gap--program {
-    background-position: 21% 50%;
-  }
-
-  /* 2つ目：画像下部（川） */
-  .section-gap--tickets {
-    background-position: 21% 82%;
-  }
-
-}
-
-.section-gap--program {
-  background-position: center 45%;
-}
-
-.section-gap--tickets {
-  background-position: center 75%;
-}
-
-/* =========================
-   Main and Section (common)
-   ========================= */
-
-main {
-  position: relative;
-  z-index: 2;
-  background: transparent;
-}
 
 main,
 .section {
@@ -324,20 +251,21 @@ main,
   z-index: 2;
 }
 
+/* Keep the main layer transparent so mobile gaps reveal the fixed hero image. */
+main {
+  background: transparent;
+}
+
 .section {
   min-height: 100vh;
   min-height: 100svh;
-
   padding-block: clamp(4rem, 10vw, 6rem);
+  background: var(--color-paper);
 }
 
 .section > .container {
   width: min(calc(100% - 2.5rem), var(--content-width));
   margin-inline: auto;
-}
-
-.section {
-  background: var(--color-paper);
 }
 
 .section--warm {
@@ -347,10 +275,6 @@ main,
 .section--dark {
   background: var(--color-ink);
   color: var(--color-white);
-}
-
-.section--rule {
-  border-top: 1px solid var(--color-line);
 }
 
 .section-heading {
@@ -365,14 +289,6 @@ main,
   flex: 1;
   background: var(--color-line);
   content: "";
-}
-
-.section-heading__number {
-  width: 1.7rem;
-  margin: 0;
-  color: var(--color-gold);
-  font-size: 0.8rem;
-  letter-spacing: 0.08em;
 }
 
 .section-heading h2 {
@@ -408,25 +324,6 @@ main,
    Performers
    ========================= */
 
-/* #performers {
-  min-height: 100vh;
-  min-height: 100svh;
-
-  display: flex;
-  align-items: center;
-
-  padding-block: clamp(3.5rem, 7vw, 5rem);
-}
-
-#performers > .container {
-  width: min(calc(100% - 2.5rem), var(--content-width));
-  margin-inline: auto;
-}
-
-#performers .section-heading {
-  margin-bottom: clamp(2rem, 4vw, 3.5rem);
-} */
-
 .performer-grid {
   display: grid;
   gap: 3.5rem;
@@ -438,7 +335,6 @@ main,
   min-width: 0;
 }
 
-/* スマホでは写真を少し小さくして中央配置 */
 .performer-card__image {
   position: relative;
 
@@ -455,13 +351,11 @@ main,
   object-fit: cover;
 }
 
-/* 情報エリア */
 .performer-card__body {
   width: min(90%, 24rem);
   margin-inline: auto;
 }
 
-/* ソプラノ / ピアノ */
 .performer-card__role {
   margin-bottom: 0.5rem;
 
@@ -485,7 +379,6 @@ main,
   opacity: 0.8;
 }
 
-/* 日本語名 */
 .performer-card__name {
   margin-bottom: 1.25rem;
 
@@ -495,7 +388,6 @@ main,
   line-height: 1.4;
 }
 
-/* ローマ字 */
 .performer-card__roman {
   display: block;
 
@@ -509,7 +401,6 @@ main,
   letter-spacing: 0.03em;
 }
 
-/* プロフィール抜粋 */
 .performer-card__excerpt {
   margin-bottom: 1.25rem;
 
@@ -518,7 +409,6 @@ main,
   line-height: 1.95;
 }
 
-/* 続きを読む */
 .performer-card__more {
   display: inline-flex;
   align-items: center;
@@ -540,230 +430,8 @@ main,
 }
 
 /* =========================
-   Profile page
-   ========================= */
-
-.profile-page {
-  background: var(--color-paper);
-}
-
-
-/* Header */
-
-.profile-header {
-  padding:
-    clamp(4rem, 10vw, 7rem)
-    0
-    clamp(3rem, 7vw, 5rem);
-
-  background: var(--color-ink);
-  color: var(--color-white);
-
-  text-align: center;
-}
-
-.profile-header__back {
-  display: inline-block;
-
-  margin-bottom: 3rem;
-
-  color: var(--color-gold-light);
-
-  font-family: var(--font-sans);
-  font-size: 0.78rem;
-  letter-spacing: 0.08em;
-
-  text-decoration: none;
-}
-
-.profile-header__back:hover,
-.profile-header__back:focus-visible {
-  color: var(--color-white);
-}
-
-.profile-header__eyebrow {
-  margin-bottom: 0.75rem;
-
-  color: var(--color-gold-light);
-
-  font-family: var(--font-sans);
-  font-size: 0.72rem;
-  letter-spacing: 0.18em;
-}
-
-.profile-header h1 {
-  margin: 0;
-
-  font-size: clamp(2rem, 8vw, 3.8rem);
-  font-weight: 400;
-  letter-spacing: 0.08em;
-}
-
-
-/* Profile */
-
-.profile-detail {
-  padding-block: clamp(5rem, 12vw, 9rem);
-}
-
-.profile-detail + .profile-detail {
-  border-top: 1px solid var(--color-line);
-}
-
-.profile-detail--alternate {
-  background: var(--color-paper-deep);
-}
-
-.profile-detail__layout {
-  display: grid;
-  gap: 2.5rem;
-}
-
-.profile-detail__image {
-  width: min(82%, 24rem);
-  margin-inline: auto;
-}
-
-.profile-detail__image img {
-  display: block;
-
-  width: 100%;
-  aspect-ratio: 3 / 4;
-
-  object-fit: cover;
-}
-
-.profile-detail__content {
-  width: min(100%, 40rem);
-  margin-inline: auto;
-}
-
-.profile-detail__role {
-  margin-bottom: 0.85rem;
-
-  color: var(--color-gold);
-
-  font-family: var(--font-sans);
-  font-size: 0.8rem;
-  font-weight: 600;
-  letter-spacing: 0.15em;
-}
-
-.profile-detail__role span {
-  margin-left: 0.65em;
-
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: 0.9em;
-  font-style: italic;
-  font-weight: 400;
-
-  letter-spacing: 0.03em;
-}
-
-.profile-detail h2 {
-  margin-bottom: 2rem;
-
-  font-size: clamp(1.9rem, 7vw, 3rem);
-  font-weight: 400;
-  line-height: 1.4;
-  letter-spacing: 0.06em;
-}
-
-.profile-detail h2 span {
-  display: block;
-
-  margin-top: 0.25rem;
-
-  color: var(--color-gold);
-
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: 0.42em;
-  font-style: italic;
-  font-weight: 400;
-
-  letter-spacing: 0.04em;
-}
-
-.profile-detail__bio {
-  color: var(--color-ink-soft);
-
-  font-size: 1rem;
-  line-height: 2.05;
-}
-
-.profile-detail__bio p {
-  margin-bottom: 1.5rem;
-}
-
-.profile-detail__bio p:last-child {
-  margin-bottom: 0;
-}
-
-.profile-detail__back {
-  display: inline-block;
-
-  margin-top: 2.5rem;
-
-  color: var(--color-gold);
-
-  font-family: var(--font-sans);
-  font-size: 0.78rem;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-
-  text-decoration: none;
-
-  transition: color 0.2s ease;
-}
-
-.profile-detail__back:hover,
-.profile-detail__back:focus-visible {
-  color: var(--color-ink);
-}
-
-
-/* Desktop */
-
-@media (min-width: 64rem) {
-
-  .profile-detail__layout {
-    grid-template-columns:
-      minmax(16rem, 0.8fr)
-      minmax(28rem, 1.2fr);
-
-    gap: clamp(4rem, 7vw, 7rem);
-
-    align-items: start;
-  }
-
-  .profile-detail__image {
-    width: 100%;
-    margin-inline: 0;
-  }
-
-  .profile-detail__content {
-    width: 100%;
-    margin-inline: 0;
-  }
-
-}
-
-.placeholder {
-  margin-bottom: 0;
-  color: #766a60;
-  font-family: var(--font-sans);
-  font-size: 0.86rem;
-  letter-spacing: 0.03em;
-}
-
-/* =========================
    Programme
    ========================= */
-
-.program-layout {
-  display: grid;
-  gap: 4rem;
-}
 
 .program-list {
   display: grid;
@@ -793,6 +461,7 @@ main,
 .program-note {
   display: inline;
   margin-left: 0.6em;
+  /* Keep the piano-solo label attached to its programme entry. */
   white-space: nowrap;
 
   color: var(--color-gold-light);
@@ -887,7 +556,6 @@ main,
   margin-bottom: 0;
 
   border-top: 1px solid var(--color-line);
-  /* border-bottom: 1px solid var(--color-line); */
 }
 
 .time-list div {
@@ -915,38 +583,14 @@ main,
 }
 
 /* =========================
-   Ticket Information
+   Tickets
    ========================= */
-
-/* =========================
-   Ticket layout
-   ========================= */
-
-.ticket-layout {
-  display: grid;
-  gap: 2.5rem;
-}
-
-.ticket-panel,
-.ticket-outlets {
-  min-width: 0;
-}
-
-.ticket-panel {
-  padding: clamp(1.6rem, 4vw, 2.75rem);
-  background: var(--color-ink);
-  color: var(--color-white);
-}
 
 .outlet-city-grid {
   display: grid;
   gap: 3rem;
   align-items: start;
 }
-
-/* -------------------------
-   Price
-   ------------------------- */
 
 .ticket-panel {
   padding: clamp(1.6rem, 5vw, 2.75rem);
@@ -955,8 +599,7 @@ main,
 }
 
 .ticket-panel h3,
-.ticket-outlets h3,
-.ticket-contact h3 {
+.ticket-outlets h3 {
   margin-bottom: 1.5rem;
   font-size: 1.2rem;
   font-weight: 400;
@@ -1008,11 +651,6 @@ main,
   white-space: nowrap;
 }
 
-
-/* =========================
-   Ticket outlets
-   ========================= */
-
 .ticket-outlets {
   padding: clamp(1.6rem, 5vw, 2.75rem);
 
@@ -1034,9 +672,6 @@ main,
   color: var(--color-ink-soft);
   font-size: 0.95rem;
 }
-
-
-/* City */
 
 .outlet-area {
   align-self: start;
@@ -1063,8 +698,6 @@ main,
 .outlet {
   text-align: left;
 }
-
-/* Individual outlets */
 
 .outlet-list {
   display: grid;
@@ -1115,20 +748,20 @@ main,
 .outlet__website {
   display: inline-flex;
   align-items: center;
-  justify-content: center;
 
   flex: 0 0 auto;
-
-  width: 1.35rem;
-  height: 1.35rem;
 
   color: var(--color-gold);
 
   font-family: var(--font-sans);
-  font-size: 0.85rem;
+  font-size: 0.68rem;
+  font-weight: 600;
   line-height: 1;
+  letter-spacing: 0.06em;
 
   text-decoration: none;
+
+  white-space: nowrap;
 
   transition:
     color 0.2s ease,
@@ -1138,11 +771,8 @@ main,
 .outlet__website:hover,
 .outlet__website:focus-visible {
   color: var(--color-gold-light);
-  transform: translate(2px, -2px);
+  transform: translate(2px, -1px);
 }
-
-
-/* Note */
 
 .ticket-outlets__note {
   margin: 2rem 0 0;
@@ -1154,76 +784,9 @@ main,
   line-height: 1.8;
 }
 
-
 /* =========================
-   Contact information
+   Contact
    ========================= */
-
-.ticket-contact {
-  margin-top: clamp(3rem, 6vw, 5rem);
-  padding-top: clamp(2rem, 4vw, 3rem);
-
-  border-top: 1px solid var(--color-line);
-}
-
-.ticket-contact h3 {
-  color: var(--color-gold);
-}
-
-.ticket-contact p {
-  margin-bottom: 0.5rem;
-
-  color: var(--color-ink-soft);
-  font-size: 0.95rem;
-  line-height: 1.9;
-}
-
-.ticket-contact__button {
-  display: inline-flex;
-  align-items: center;
-
-  margin-top: 1.5rem;
-  padding: 0.8rem 1.4rem;
-
-  border: 1px solid var(--color-gold);
-
-  color: var(--color-gold);
-
-  font-family: var(--font-sans);
-  font-size: 0.8rem;
-  font-weight: 600;
-  letter-spacing: 0.1em;
-
-  text-decoration: none;
-
-  transition:
-    background-color 0.2s ease,
-    color 0.2s ease;
-}
-
-.ticket-contact__button:hover,
-.ticket-contact__button:focus-visible {
-  background: var(--color-gold);
-  color: var(--color-white);
-}
-
-
-/* =========================
-   Desktop
-   ========================= */
-
-@media (min-width: 64rem) {
-
-}
-
-/* =========================
-   Contact / Google Form
-   ========================= */
-
-.contact-form-embed {
-  width: min(100%, 50rem);
-  margin-inline: auto;
-}
 
 .contact-form-embed__frame {
   width: 100%;
@@ -1237,6 +800,18 @@ main,
 
   margin: 0;
   border: 0;
+}
+
+/* =========================
+   Background windows
+   ========================= */
+
+/* Mobile gaps stay transparent and expose the fixed hero image beneath main. */
+.section-gap {
+  position: relative;
+  z-index: 1;
+  height: clamp(7rem, 14vw, 11rem);
+  background: transparent;
 }
 
 /* =========================
@@ -1260,9 +835,6 @@ main,
   width: min(calc(100% - 1rem), var(--content-width));
   margin-inline: auto;
 }
-
-
-/* 主催・後援 */
 
 .site-footer__credits {
   display: grid;
@@ -1310,9 +882,6 @@ main,
   line-height: 1.8;
 }
 
-
-/* Footer bottom */
-
 .site-footer__bottom {
   padding-top: 1.75rem;
 
@@ -1337,6 +906,7 @@ main,
    Floating contact button
    ========================= */
 
+/* Keep the form shortcut available at the bottom-right while scrolling. */
 .floating-contact {
   position: fixed;
   z-index: 50;
@@ -1377,30 +947,167 @@ a.floating-contact:focus-visible {
   color: var(--color-white);
 }
 
+/* =========================
+   Profile page
+   ========================= */
+
+.profile-page {
+  background: var(--color-paper);
+}
+
+.profile-header {
+  padding:
+    clamp(4rem, 10vw, 7rem)
+    0
+    clamp(3rem, 7vw, 5rem);
+  background: var(--color-ink);
+  color: var(--color-white);
+  text-align: center;
+}
+
+.profile-header__back {
+  display: inline-block;
+  margin-bottom: 3rem;
+  color: var(--color-gold-light);
+  font-family: var(--font-sans);
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  text-decoration: none;
+}
+
+.profile-header__back:hover,
+.profile-header__back:focus-visible {
+  color: var(--color-white);
+}
+
+.profile-header__eyebrow {
+  margin-bottom: 0.75rem;
+  color: var(--color-gold-light);
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+}
+
+.profile-header h1 {
+  margin: 0;
+  font-size: clamp(2rem, 8vw, 3.8rem);
+  font-weight: 400;
+  letter-spacing: 0.08em;
+}
+
+.profile-detail {
+  padding-block: clamp(5rem, 12vw, 9rem);
+}
+
+.profile-detail + .profile-detail {
+  border-top: 1px solid var(--color-line);
+}
+
+.profile-detail--alternate {
+  background: var(--color-paper-deep);
+}
+
+.profile-detail__layout {
+  display: grid;
+  gap: 2.5rem;
+}
+
+.profile-detail__image {
+  width: min(82%, 24rem);
+  margin-inline: auto;
+}
+
+.profile-detail__image img {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+}
+
+.profile-detail__content {
+  width: min(100%, 40rem);
+  margin-inline: auto;
+}
+
+.profile-detail__role {
+  margin-bottom: 0.85rem;
+  color: var(--color-gold);
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+}
+
+.profile-detail__role span {
+  margin-left: 0.65em;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 0.9em;
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: 0.03em;
+}
+
+.profile-detail h2 {
+  margin-bottom: 2rem;
+  font-size: clamp(1.9rem, 7vw, 3rem);
+  font-weight: 400;
+  line-height: 1.4;
+  letter-spacing: 0.06em;
+}
+
+.profile-detail h2 span {
+  display: block;
+  margin-top: 0.25rem;
+  color: var(--color-gold);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 0.42em;
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+}
+
+.profile-detail__bio {
+  color: var(--color-ink-soft);
+  font-size: 1rem;
+  line-height: 2.05;
+}
+
+.profile-detail__bio p {
+  margin-bottom: 1.5rem;
+}
+
+.profile-detail__bio p:last-child {
+  margin-bottom: 0;
+}
+
+.profile-detail__back {
+  display: inline-block;
+  margin-top: 2.5rem;
+  color: var(--color-gold);
+  font-family: var(--font-sans);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.profile-detail__back:hover,
+.profile-detail__back:focus-visible {
+  color: var(--color-ink);
+}
+
+/* =========================
+   Responsive enhancements
+   ========================= */
+
+/* Mobile-first base styles are enhanced at the existing width breakpoints. */
 @media (min-width: 36rem) {
   .container {
     width: min(calc(100% - 4rem), var(--content-width));
   }
 
-  .section-nav ul {
-    grid-template-columns: repeat(4, 1fr);
-  }
-
-  .section-nav li,
-  .section-nav li:nth-child(odd),
-  .section-nav li:nth-child(-n + 2) {
-    border: 0;
-  }
-
-  .section-nav li + li {
-    border-left: 1px solid var(--color-line);
-  }
-
   .performer-grid,
-  .profile-grid,
-  .concert-grid,
-  .outlet-grid,
-  .credit-grid {
+  .concert-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
@@ -1408,18 +1115,14 @@ a.floating-contact:focus-visible {
     gap: clamp(2rem, 6vw, 5rem);
   }
 
-  .profile-grid {
-    gap: clamp(3rem, 7vw, 6rem);
-  }
-
   .program-list {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
-
-  .program-solo {
-    padding: 2.5rem;
-  }
 }
+
+/* =========================
+   Desktop
+   ========================= */
 
 @media (min-width: 64rem) {
   .hero__panel {
@@ -1437,8 +1140,26 @@ a.floating-contact:focus-visible {
     padding-block: clamp(4rem, 7vh, 6rem);
   }
 
+  /* Desktop gaps use separate fixed crops of the hero instead of transparency. */
+  .section-gap {
+    height: clamp(8rem, 15vw, 12rem);
+    background-image: url("../images/hero-image.webp");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+  }
+
+  /* Programme/concert window: middle crop. */
+  .section-gap--program {
+    background-position: center 45%;
+  }
+
+  /* Ticket/contact window: lower crop. */
+  .section-gap--tickets {
+    background-position: center 75%;
+  }
+
   .performer-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
     column-gap: clamp(3rem, 5vw, 6rem);
   }
 
@@ -1451,7 +1172,7 @@ a.floating-contact:focus-visible {
     align-items: center;
   }
 
-  /* PCではカード横並びなので幅制限を解除 */
+  /* Side-by-side cards no longer need the mobile width constraints. */
   .performer-card__image {
     width: 100%;
     margin-inline: 0;
@@ -1474,18 +1195,7 @@ a.floating-contact:focus-visible {
     font-size: 0.76rem;
   }
 
-  .section-nav {
-    position: relative;
-    z-index: 5;
-  }
-
-  .program-layout {
-    display: block;
-  }
-
   .program-list {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
     column-gap: clamp(4rem, 8vw, 8rem);
     row-gap: 2.5rem;
   }
@@ -1493,16 +1203,6 @@ a.floating-contact:focus-visible {
   .concert-card header,
   .concert-card__body {
     padding: 2rem;
-  }
-
-  .ticket-layout {
-    grid-template-columns:
-      minmax(18rem, 0.72fr)
-      minmax(30rem, 1.28fr);
-
-    gap: clamp(3rem, 6vw, 6rem);
-
-    align-items: start;
   }
 
   .outlet-city-grid {
@@ -1558,17 +1258,35 @@ a.floating-contact:focus-visible {
     font-size: 0.84rem;
     letter-spacing: 0.1em;
   }
+
+  .profile-detail__layout {
+    grid-template-columns:
+      minmax(16rem, 0.8fr)
+      minmax(28rem, 1.2fr);
+    gap: clamp(4rem, 7vw, 7rem);
+    align-items: start;
+  }
+
+  .profile-detail__image,
+  .profile-detail__content {
+    width: 100%;
+    margin-inline: 0;
+  }
 }
+
+/* =========================
+   High contrast
+   ========================= */
 
 @media (prefers-contrast: more) {
   :root {
     --color-line: rgba(36, 33, 31, 0.48);
   }
-
-  .placeholder {
-    color: var(--color-ink);
-  }
 }
+
+/* =========================
+   Print
+   ========================= */
 
 @media print {
   body {
@@ -1576,10 +1294,6 @@ a.floating-contact:focus-visible {
     color: #000;
     font-size: 10pt;
   }
-
-  .skip-link,
-  .section-nav,
-  .hero__background,
 
   .hero {
     display: block;
@@ -1596,10 +1310,6 @@ a.floating-contact:focus-visible {
     padding-block: 2rem;
     background: #fff;
     color: #000;
-  }
-
-  .performer-card__image span {
-    color: #fff;
   }
 
   .ticket-panel {
