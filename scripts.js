@@ -1,18 +1,26 @@
 /* Scroll reveal animations */
-jQuery(function ($) {
-  $(window).on('scroll load', function () {
-    var scrollTop = $(window).scrollTop();
-    var windowHeight = $(window).height();
+(() => {
+  const revealElements = document.querySelectorAll(
+    '.fade-in, .fade-left, .fade-right, .fade-up'
+  );
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-    $('.fade-in, .fade-left, .fade-right, .fade-up').each(function () {
-      var elementTop = $(this).offset().top;
+  if (!revealElements.length || reducedMotion || !('IntersectionObserver' in window)) {
+    return;
+  }
 
-      if (scrollTop > elementTop - windowHeight) {
-        $(this).css({
-          opacity: 1,
-          transform: 'translate(0)'
-        });
+  document.documentElement.classList.add('reveal-enabled');
+
+  const revealObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) {
+        return;
       }
+
+      entry.target.classList.add('is-visible');
+      observer.unobserve(entry.target);
     });
   });
-});
+
+  revealElements.forEach((element) => revealObserver.observe(element));
+})();
