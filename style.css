@@ -605,35 +605,76 @@ textarea.c-form__input {
 }
 
 /* =========================
-   Background images
+   Fixed background images
    ========================= */
 
-/* Non-iOS browsers receive the fixed-attachment override from fixparallax.css. */
-.cd-fixed-bg {
+/* Fixed HTML image layers provide consistent viewport backgrounds, including iOS Safari. */
+.fixed-bg-section {
   position: relative;
   height: 100%;
-  background-size: cover;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-attachment: scroll;
-  background-repeat: no-repeat;
-  background-position: center center;
   z-index: 2;
+  isolation: isolate;
 }
 
-.cd-fixed-bg.bg-hero {
-  background-image: linear-gradient(to left, transparent 0%, transparent 80%, #fff 100%), linear-gradient(to right, transparent 50%, transparent 80%, #fff 100%), linear-gradient(to bottom, transparent 0%, transparent 90%, #fff 100%), url(./images/background/hero.webp);
+.fixed-bg-window {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  -webkit-clip-path: inset(0);
+  clip-path: inset(0);
+  pointer-events: none;
+  user-select: none;
 }
 
-.cd-fixed-bg.bg-live {
-  background-image: linear-gradient(to right,black 50%, transparent 70%, black 100%), url(./images/background/live.webp);
-  background-position: right center;
+.fixed-bg-section > :not(.fixed-bg-window) {
+  position: relative;
+  z-index: 1;
 }
 
-.cd-fixed-bg.bg-bio {
-  background-image: url(./images/background/bio.webp);
-  background-position: center bottom;
+.fixed-bg {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  height: 100svh;
+}
+
+.fixed-bg picture,
+.fixed-bg img {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.fixed-bg img {
+  object-fit: cover;
+}
+
+.fixed-bg::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+}
+
+.fixed-bg--hero img {
+  object-position: center center;
+}
+
+.fixed-bg--hero::after {
+  background: linear-gradient(to left, transparent 0%, transparent 80%, #fff 100%), linear-gradient(to right, transparent 50%, transparent 80%, #fff 100%), linear-gradient(to bottom, transparent 0%, transparent 90%, #fff 100%);
+}
+
+.fixed-bg--live img {
+  object-position: right center;
+}
+
+.fixed-bg--live::after {
+  background: linear-gradient(to right, black 50%, transparent 70%, black 100%);
+}
+
+.fixed-bg--bio img {
+  object-position: center bottom;
 }
 
 /* =========================
@@ -750,50 +791,23 @@ textarea.c-form__input {
     width: 100%;
   }
 
-  /* Portrait backgrounds retain the existing mobile images and overlays. */
-  .cd-fixed-bg.bg-hero {
-    background-image: url(./images/background/hero-mobile.webp);
-    background-position: center bottom;
+  .fixed-bg--hero img {
+    object-position: center bottom;
   }
 
-  .cd-fixed-bg.bg-hero::before {
-    content: '';
-    background-color: rgba(255,255,255,0.6);
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    display: block;
-    z-index: -1;
+  .fixed-bg--hero::after {
+    background: rgba(255,255,255,0.6);
   }
 
-  .cd-fixed-bg.bg-live {
-    background-image: url(./images/background/live-mobile.webp);
-    background-position: right top;
+  .fixed-bg--live img {
+    object-position: right top;
   }
 
-  .cd-fixed-bg.bg-live::before {
-    content: '';
-    background-color: rgba(0,0,0,0.6);
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    display: block;
-    z-index: -1;
+  .fixed-bg--live::after {
+    background: rgba(0,0,0,0.6);
   }
 
-  .cd-fixed-bg.bg-bio::before {
-    content: '';
-    background-color: rgba(255,255,255,0.6);
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    display: block;
-    z-index: -1;
+  .fixed-bg--bio::after {
+    background: rgba(255,255,255,0.6);
   }
 }
