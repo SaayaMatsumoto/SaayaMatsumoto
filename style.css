@@ -84,6 +84,21 @@ body {
   transition: 0.5s;
 }
 
+.social-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 1.4em;
+}
+
+.social-icon-x {
+  display: block;
+  width: 1em;
+  height: 1em;
+  fill: currentColor;
+}
+
 /* =========================
    Footer
    ========================= */
